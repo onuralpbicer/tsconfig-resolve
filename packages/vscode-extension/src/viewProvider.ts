@@ -39,11 +39,7 @@ export class TSConfigViewProvider implements vscode.WebviewViewProvider {
             vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js"),
         );
         const webviewStyleUri = webviewView.webview.asWebviewUri(
-            vscode.Uri.joinPath(
-                this._extensionUri,
-                "dist",
-                "vscode-webview.css",
-            ),
+            vscode.Uri.joinPath(this._extensionUri, "dist", "webview.css"),
         );
 
         this.updateDocument(vscode.window.activeTextEditor?.document);

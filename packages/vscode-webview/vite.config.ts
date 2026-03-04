@@ -14,6 +14,7 @@ export default defineConfig({
         cssCodeSplit: false,
         rollupOptions: {
             output: {
+                assetFileNames: "webview.[ext]",
                 entryFileNames: "webview.js",
             },
         },

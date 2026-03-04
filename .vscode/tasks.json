@@ -5,7 +5,11 @@
     "tasks": [
         {
             "label": "watch",
-            "dependsOn": ["npm: watch:tsc", "npm: watch:esbuild"],
+            "dependsOn": [
+                "npm: watch:tsc",
+                "npm: watch:esbuild",
+                "npm: watch:svelte"
+            ],
             "presentation": {
                 "reveal": "never"
             },
@@ -46,6 +50,37 @@
         },
         {
             "type": "npm",
+            "script": "watch",
+            "options": {
+                "cwd": "${workspaceFolder}/packages/vscode-webview"
+            },
+            "group": "build",
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^(ERROR)\\s+(.*)$",
+                            "file": 1,
+                            "message": 2,
+                            "kind": "file"
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "build started",
+                        "endsPattern": "built in"
+                    }
+                }
+            ],
+            "isBackground": true,
+            "label": "npm: watch:svelte",
+            "presentation": {
+                "group": "watch",
+                "reveal": "never"
+            }
+        },
+        {
+            "type": "npm",
             "script": "watch-tests",
             "problemMatcher": "$tsc-watch",
             "isBackground": true,
@@ -57,7 +92,10 @@
         },
         {
             "label": "tasks: watch-tests",
-            "dependsOn": ["npm: watch", "npm: watch-tests"],
+            "dependsOn": [
+                "npm: watch",
+                "npm: watch-tests"
+            ],
             "problemMatcher": []
         }
     ]
