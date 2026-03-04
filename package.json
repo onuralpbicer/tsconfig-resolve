@@ -1,6 +1,7 @@
 {
     "name": "tsconfig-resolve",
     "workspaces": [
-        "packages/*"
+        "packages/*",
+        "libs/*"
     ]
 }
